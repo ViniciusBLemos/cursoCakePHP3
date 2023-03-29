@@ -29,6 +29,7 @@ require __DIR__ . '/paths.php';
  */
 require CORE_PATH . 'config' . DS . 'bootstrap.php';
 
+use App\Application;
 use Cake\Cache\Cache;
 use Cake\Console\ConsoleErrorHandler;
 use Cake\Core\Configure;
@@ -83,8 +84,8 @@ try {
  */
 //Configure::load('app_local', 'default');
 
-Plugin::load('Migrations');
-Plugin::load('Admin');
+// Application::addPlugin('Admin');
+// Application::addPlugin('Migrations');
 
 /*
  * When debug = true the metadata cache should only last
