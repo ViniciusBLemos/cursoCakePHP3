@@ -16,7 +16,7 @@
     </ul>
 </nav>
 <div class="paginas view large-9 medium-8 columns content">
-    <h3><?= h($pagina->id) ?></h3>
+    <!-- <h3><?= h($pagina->id) ?></h3> -->
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Titulo') ?></th>
@@ -25,14 +25,6 @@
         <tr>
             <th scope="row"><?= __('Url') ?></th>
             <td><?= h($pagina->url) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Categoria') ?></th>
-            <td><?= $pagina->has('categoria') ? $this->Html->link($pagina->categoria->id, ['controller' => 'Categorias', 'action' => 'view', $pagina->categoria->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($pagina->id) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Created') ?></th>
@@ -47,4 +39,5 @@
         <h4><?= __('Conteudo') ?></h4>
         <?= $this->Text->autoParagraph(h($pagina->conteudo)); ?>
     </div>
+    <?php echo $this->Html->link('Voltar', ['action' => 'index'])?>
 </div>

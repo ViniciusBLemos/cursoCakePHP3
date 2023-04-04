@@ -2,6 +2,7 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\Utility\Inflector;
 
 /**
  * Pagina Entity
@@ -36,4 +37,15 @@ class Pagina extends Entity
         'created' => true,
         'modified' => true,
     ];
+
+    public function _setTitulo($titulo)
+    {
+        $this->set('url', strtolower(Inflector::slug($titulo)));
+        return $titulo;
+    }
+
+    public function _setUrl($url)
+    {
+        return strtolower(Inflector::slug($url));
+    }
 }

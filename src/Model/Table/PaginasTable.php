@@ -91,4 +91,22 @@ class PaginasTable extends Table
 
         return $rules;
     }
+
+    public function getPaginaByUrl($url)
+	{
+		$query = $this->find()
+						->contain(['Categorias'])
+						->where([
+							'Paginas.url'=>$url
+						]);
+		return $query->first();
+	}
+
+	public function getMenu()
+	{
+		return $this->find()
+                ->select(['titulo', 'url'])
+                ->all();
+	}
+
 }

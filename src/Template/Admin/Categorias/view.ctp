@@ -4,17 +4,6 @@
  * @var \App\Model\Entity\Categoria $categoria
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Categoria'), ['action' => 'edit', $categoria->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Categoria'), ['action' => 'delete', $categoria->id], ['confirm' => __('Are you sure you want to delete # {0}?', $categoria->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Categorias'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Categoria'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Paginas'), ['controller' => 'Paginas', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Pagina'), ['controller' => 'Paginas', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
 <div class="categorias view large-9 medium-8 columns content">
     <h3><?= h($categoria->id) ?></h3>
     <table class="vertical-table">
@@ -42,6 +31,11 @@
     <div class="related">
         <h4><?= __('Related Paginas') ?></h4>
         <?php if (!empty($categoria->paginas)): ?>
+            <ul>
+                <?php foreach($categoria->paginas as $v):?>
+                    <li><?php echo $v->id; ?> - <?php echo $v->titulo;?></li>
+                <?php endforeach; ?>
+            </ul>
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>

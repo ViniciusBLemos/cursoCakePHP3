@@ -16,6 +16,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 
 /**
  * Application Controller
@@ -52,7 +53,24 @@ class AppController extends Controller
 
     public function beforeRender(Event $event)
     {
-        $this->theme = 'Admin';
+        $prefix = null;
+        if (isset($this->request->params['prefix'])) {
+            $prefix = $this->request->params['prefix'];
+        }
+        if ($prefix == 'admin') {
+            $this->theme = 'Admin';
+        } else {
+            $this->layout = 'site';
+
+            $paginas = TableRegistry::get('Paginas');
+            $paginas = $paginas->getMenu();
+
+            $categorias = TableRegistry::get('Categorias');
+            $categorias = $categorias->getMenu();
+
+            $this->set(compact('paginas', 'categorias'));
+        }
+
     }
 }
 

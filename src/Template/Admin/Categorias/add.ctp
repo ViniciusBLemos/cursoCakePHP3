@@ -18,7 +18,7 @@
         <legend><?= __('Add Categoria') ?></legend>
         <?php
             echo $this->Form->control('titulo');
-            echo $this->Form->control('url');
+
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

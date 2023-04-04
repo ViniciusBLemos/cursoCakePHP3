@@ -43,6 +43,7 @@ use Cake\Mailer\Email;
 use Cake\Mailer\TransportFactory;
 use Cake\Utility\Inflector;
 use Cake\Utility\Security;
+use App\Application;
 
 /**
  * Uncomment block of code below if you want to use `.env` file during development.
@@ -83,9 +84,10 @@ try {
  */
 //Configure::load('app_local', 'default');
 
-Plugin::load('Migrations');
-Plugin::load('Admin');
-
+// Plugin::load('Migrations');
+// Plugin::load('Admin');
+Application::addPlugin('Admin');
+Application::addPlugin('Migrations');
 /*
  * When debug = true the metadata cache should only last
  * for a short time.

@@ -35,7 +35,7 @@ class CategoriasTable extends Table
         parent::initialize($config);
 
         $this->setTable('categorias');
-        $this->setDisplayField('id');
+        $this->setDisplayField('titulo');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
@@ -71,4 +71,20 @@ class CategoriasTable extends Table
 
         return $validator;
     }
+
+    public function getCategoriaByUrl($url)
+	{
+		return $this->find()
+    		->contain(['Paginas'])
+    		->where(['Categorias.url'=>$url])
+    		->first();
+	}
+
+	public function getMenu()
+    {
+    	return $this->find()
+                ->select(['titulo', 'url'])
+                ->all();
+    }
+
 }

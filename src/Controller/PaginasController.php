@@ -17,17 +17,12 @@ class PaginasController extends AppController
 
     public function view ($url)
     {
-        $query = $this->Paginas
-            ->find()
-            ->where([
-                'Paginas.url' => $url
-            ]);
+        $pagina = $this->Paginas->getPaginaByUrl($url);
 
-        $pagina = $query->first();
-
-        if (empty($pagina)) {
-            throw new NotFoundException('Pagina não encontrada');
-        }
+        // if (empty($pagina)) {
+        //     throw new NotFoundException('Pagina não encontrada');
+        // }
         $this->set(compact('pagina'));
     }
+
 }

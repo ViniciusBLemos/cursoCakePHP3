@@ -60,9 +60,10 @@ Router::scope('/', function (RouteBuilder $routes) {
     // $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);*/
 
 
-    $routes->connect('/', ['controller' => 'paginas', 'action' => 'view', 'home']);
+    $routes->connect('/', ['controller' => 'Paginas', 'action' => 'view', 'home']);
 
-    $routes->connect('/*', ['controller' => 'paginas', 'action' => 'view']);
+    $routes->connect('/*', ['controller' => 'Paginas', 'action' => 'view']);
+    $routes->connect('/categoria/*', ['controller' => 'Categorias', 'action' => 'view']);
 
     $routes->fallbacks(DashedRoute::class);
 
